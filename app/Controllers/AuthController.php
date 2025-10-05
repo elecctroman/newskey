@@ -3,8 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
-use App\Services\MailService;
-use Core\Config;
+
 
 /**
  * // --- Kimlik doğrulama işlemleri
@@ -12,13 +11,13 @@ use Core\Config;
 class AuthController extends BaseController
 {
     private User $users;
-    private MailService $mailService;
+
 
     public function __construct()
     {
         parent::__construct();
         $this->users = new User();
-        $this->mailService = new MailService();
+
     }
 
     /**
@@ -128,9 +127,7 @@ class AuthController extends BaseController
         $token = bin2hex(random_bytes(32));
         $this->users->createPasswordResetToken((int) $user['id'], $token);
 
-        $url = Config::get('app.url', 'http://localhost');
-        $body = 'Şifrenizi sıfırlamak için bağlantı: ' . rtrim((string) $url, '/') . '/reset-password?token=' . $token;
-        $this->mailService->send($email, (string) $user['name'], 'Şifre sıfırlama talebi', $body);
+
 
         $this->response->redirect('/login');
     }

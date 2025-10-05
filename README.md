@@ -4,18 +4,7 @@ Profesyonel e-pin, lisans anahtarı ve dijital hesap satışlarını yönetmek i
 
 ## Başlangıç
 
-1. Depoyu klonlayın ve `config/config.php` dosyasındaki ayarları ihtiyacınıza göre düzenleyin.
-2. Veritabanı tablolarını oluşturun:
-   ```bash
-   mysql -u root -p newskey < database/migrations.sql
-   ```
-3. (Opsiyonel) Demo verileri yükleyin:
-   ```bash
-   php database/demo_seeder.php
-   ```
-4. Uygulamayı çalıştırmak için dahili PHP sunucusunu kullanın:
-   ```bash
-   php -S localhost:8000 index.php
+
    ```
 
 ## Klasör Yapısı
@@ -27,7 +16,7 @@ Profesyonel e-pin, lisans anahtarı ve dijital hesap satışlarını yönetmek i
 - `app/Views/` – TailwindCSS tabanlı arayüz şablonları.
 - `database/` – SQL migration dosyaları ve demo seeder.
 - `docs/` – API dokümantasyonu.
-- `index.php` – Uygulamanın kök dizinindeki giriş noktası.
+
 
 ## Özellikler
 

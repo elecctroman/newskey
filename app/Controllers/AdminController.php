@@ -7,7 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\SupplierCredential;
 use App\Models\User;
-use Core\Config;
+
 
 /**
  * // --- Yönetici paneli
@@ -79,8 +79,7 @@ class AdminController extends BaseController
      */
     private function encryptSecret(string $value): string
     {
-        $appKey = (string) Config::get('app.key', '');
-        $key = hash('sha256', $appKey, true);
+
         $iv = random_bytes(16);
         $cipher = openssl_encrypt($value, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv) ?: '';
 

@@ -1,4 +1,2 @@
 /vendor/
-/storage/logs/*.log
-/storage/cache/*
-/config/config.local.php
+

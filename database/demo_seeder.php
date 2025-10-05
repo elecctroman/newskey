@@ -5,18 +5,14 @@ declare(strict_types=1);
 use App\Models\Product;
 use App\Models\User;
 use Core\Autoloader;
-use Core\Config;
 
-require __DIR__ . '/../core/Autoloader.php';
-require __DIR__ . '/../core/Config.php';
 
 $autoloader = new Autoloader();
 $autoloader->addNamespace('Core', __DIR__ . '/../core');
 $autoloader->addNamespace('App', __DIR__ . '/../app');
 $autoloader->register();
 
-$timezone = Config::get('app.timezone', 'UTC');
-date_default_timezone_set(is_string($timezone) ? $timezone : 'UTC');
+
 
 $user = new User();
 $product = new Product();
