@@ -1,0 +1,16 @@
+{
+    "name": "newskey/platform",
+    "description": "Manual MVC based e-pin and digital product sales platform",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "vlucas/phpdotenv": "^5.6",
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    }
+}
