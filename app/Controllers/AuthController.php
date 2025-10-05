@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
-use PHPMailer\PHPMailer\PHPMailer;
+
 
 /**
  * // --- Kimlik doğrulama işlemleri
@@ -12,10 +12,12 @@ class AuthController extends BaseController
 {
     private User $users;
 
+
     public function __construct()
     {
         parent::__construct();
         $this->users = new User();
+
     }
 
     /**
@@ -125,19 +127,7 @@ class AuthController extends BaseController
         $token = bin2hex(random_bytes(32));
         $this->users->createPasswordResetToken((int) $user['id'], $token);
 
-        $mailer = new PHPMailer(true);
-        $config = require __DIR__ . '/../../config/services.php';
-        $mailer->isSMTP();
-        $mailer->Host = (string) $config['mail']['host'];
-        $mailer->Port = (int) $config['mail']['port'];
-        $mailer->SMTPAuth = true;
-        $mailer->Username = (string) $config['mail']['username'];
-        $mailer->Password = (string) $config['mail']['password'];
-        $mailer->setFrom((string) $config['mail']['from'], 'NewsKey');
-        $mailer->addAddress($email, (string) $user['name']);
-        $mailer->Subject = 'Şifre sıfırlama talebi';
-        $mailer->Body = 'Şifrenizi sıfırlamak için bağlantı: ' . getenv('APP_URL') . '/reset-password?token=' . $token;
-        $mailer->send();
+
 
         $this->response->redirect('/login');
     }

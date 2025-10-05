@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\SupplierCredential;
+
 use Core\Logger;
 
 /**
@@ -83,7 +84,7 @@ class SupplierManager
 
         $iv = substr($raw, 0, 16);
         $cipherText = substr($raw, 16);
-        $key = hash('sha256', (string) getenv('APP_KEY'), true);
+
 
         return openssl_decrypt($cipherText, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv) ?: '';
     }
